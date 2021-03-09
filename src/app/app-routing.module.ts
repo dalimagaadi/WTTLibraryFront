@@ -8,6 +8,7 @@ import { BoekenzoekenComponent } from './boekenzoeken/boekenzoeken.component';
 import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
 import { BoekaanvraagComponent } from './boekaanvraag/boekaanvraag.component';
 import { ContactComponent } from './contact/contact.component';
+import { RapportagesComponent } from './rapportages/rapportages.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'boekaanvraag', component: BoekaanvraagComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'rapportages', component: RapportagesComponent },
 
   { path: '**', component: ErrorComponent },
 ];

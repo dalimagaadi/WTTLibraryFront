@@ -1,4 +1,6 @@
+import { AdminBepalenService } from './../service/admin-bepalen.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private AdminBepalenService: AdminBepalenService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  handleLogin(){
+    if(this.AdminBepalenService.admin(false)){
+      console.log("hoi");
+    }
   }
 
 }
