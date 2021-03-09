@@ -1,1 +1,38 @@
-<p>boekenzoeken works!</p>
+<header class="header"> Boeken zoeken</header>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="wrap">
+    <div class="search">
+       <input type="text" class="searchTerm" placeholder="Naar welk boek op je opzoek?">
+       <button type="submit" class="searchButton">
+         <i class="fa fa-search"></i>
+      </button>
+    </div>
+ </div>
+
+ <div class="zoeklijst">
+    <table class="boeklijst" border="1" align="center">
+        <thead>
+            <tr>
+                <th style="white-space:nowrap">#</th>
+                <th style="white-space:nowrap">Titel</th>
+                <th style="white-space:nowrap">Auteur</th>
+                <th style="white-space:nowrap">Tags</th>
+                <th style="white-space:nowrap">Status</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td style="white-space:nowrap">Java for Dummies</td>
+                <td style="white-space:nowrap">P.R. grammeren</td>
+                <td style="white-space:nowrap">Java, Beginner</td>
+                <td style="white-space:nowrap">Beschikbaar</td>
+                <td style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Reserveren" </button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+ </div>

@@ -1,0 +1,13 @@
+.header{
+    text-align: center;
+    font: 'Open Sans', sans-serif;
+    font-size:50px
+}
+
+.winkelwagen{
+    width: 30%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
