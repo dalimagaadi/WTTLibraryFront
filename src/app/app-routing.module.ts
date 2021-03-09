@@ -8,6 +8,7 @@ import { ErrorComponent } from './error/error.component';
 import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
 import { ContactComponent } from './contact/contact.component';
 import { BoekaanvraagComponent } from './boekaanvraag/boekaanvraag.component';
+import { RapportagesComponent } from './rapportages/rapportages.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'winkelwagen', component: WinkelwagenComponent },
+  { path: 'rapportages', component: RapportagesComponent },
 
   { path: '**', component: ErrorComponent },
 ];

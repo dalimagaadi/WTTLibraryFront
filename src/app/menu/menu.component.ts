@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminBepalenService } from '../service/admin-bepalen.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  isUserAdmin: boolean = false;
 
-  constructor() { }
+  constructor(private adminBepalenService: AdminBepalenService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.isUserAdmin = this.adminBepalenService.isUserAdmin();
   }
 
 }
