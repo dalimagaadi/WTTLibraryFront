@@ -7,7 +7,7 @@ import { AdminBepalenService } from '../service/admin-bepalen.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  isUserAdmin: boolean = false;
+  isUserAdmin: boolean = true;
 
   constructor(private adminBepalenService: AdminBepalenService) { }
 
