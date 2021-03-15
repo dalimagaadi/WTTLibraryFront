@@ -7,4 +7,18 @@
     outline: none;
     color: #9DBFAF;
   }
-  
+    .header{
+    text-align: center;
+    font: 'Open Sans', sans-serif;
+    font-size:50px
+}
+  .wrap{
+    width: 40%;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } 
+  a{
+    color:rgb(153, 190, 14);
+} 

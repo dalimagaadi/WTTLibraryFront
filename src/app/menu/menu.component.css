@@ -5,12 +5,12 @@
 .titel {
     background-color:rgb(20, 16, 16);
     color: white;
-    font-size:50px;
-    text-align: center;
+    font-size:60px;  
+    text-indent: 660px;
     height: 144px;
 }
 .plaatje{
     float:left;
-    background-color:black
+    background-color:rgb(20, 16, 16);
 }
 

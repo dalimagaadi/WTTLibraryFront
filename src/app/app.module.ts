@@ -12,6 +12,7 @@ import { BoektoevoegenComponent } from './boektoevoegen/boektoevoegen.component'
 import { BoekenzoekenComponent} from './boekenzoeken/boekenzoeken.component';
 import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.component';
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkerto
     BoektoevoegenComponent,
     MedewerkerzoekenComponent,
     MedewerkertoevoegenComponent,
-    BoekenzoekenComponent
+    BoekenzoekenComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
