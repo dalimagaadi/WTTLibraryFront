@@ -1,4 +1,4 @@
-import { AdminBepalenService } from './../service/admin-bepalen.service';
+import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

@@ -3,32 +3,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="wrap">
     <div class="search">
-       <input type="text" class="searchTerm" placeholder="Naar welk boek op je opzoek?">
-       <button type="submit" class="searchButton">
+       <input type="text" name="zoekTerm" class="searchTerm" placeholder="Naar welk boek op je opzoek?" [(ngModel)]="zoekTerm">
+       <button type="submit" class="searchButton" (click)="searchBoeken()">
          <i class="fa fa-search"></i>
       </button>
     </div>
  </div>
 
  <div class="zoeklijst">
-    <table class="boeklijst" border="1" align="center">
+    <table class="boeklijst" border="1" align="center" *ngIf="gevondenBoeken.length > 0">
+        
         <thead>
             <tr>
                 <th style="white-space:nowrap">#</th>
                 <th style="white-space:nowrap">Titel</th>
                 <th style="white-space:nowrap">Auteur</th>
-                <th style="white-space:nowrap">Tags</th>
-                <th style="white-space:nowrap">Status</th>       
+                <th style="white-space:nowrap">Aantal beschikbaar</th>       
+                <!-- <th style="white-space:nowrap">Tags</th> -->
                 <th style="white-space:nowrap"> </th>            
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td style="white-space:nowrap">Java for Dummies</td>
-                <td style="white-space:nowrap">P.R. grammeren</td>
-                <td style="white-space:nowrap">Java, Beginner</td>
-                <td style="white-space:nowrap">Beschikbaar</td>
+            <tr *ngFor= "let boek of gevondenBoeken">
+                <td>{{boek.isbn}}</td>
+                <td style="white-space:nowrap">{{boek.titel}}</td>
+                <td style="white-space:nowrap">{{boek.auteur}}</td>
+                <td style="white-space:nowrap">{{boek.aantal}}</td>
+
                 <td style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
             </tr>
         </tbody>

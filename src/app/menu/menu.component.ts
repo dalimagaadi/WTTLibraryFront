@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminBepalenService } from '../service/admin-bepalen.service';
+import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
 
 @Component({
   selector: 'app-menu',
