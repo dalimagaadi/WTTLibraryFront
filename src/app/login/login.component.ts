@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   handleLogin(){   
       this.AdminBepalenService.searchUser(this.userName,this.password).subscribe((gebruiker: User)=>{
       this.gevondenUser=gebruiker;
-      console.log(this.gevondenUser);
       if (this.gevondenUser==null){
         alert("joejoe")
         
       } 
       else{
+        this.AdminBepalenService.setUser(gebruiker);
         this.router.navigate(["welkom"]);
       }
     })

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../model/User';
+import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
 
 @Component({
   selector: 'app-welkom',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welkom.component.css']
 })
 export class WelkomComponent implements OnInit {
+  _gebruiker: User;
+  constructor(private adminBepalenService: AdminBepalenService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.adminBepalenService.currentUserObservable.subscribe((_currentUser: User)=>{
+      next: this._gebruiker = _currentUser
+    })
   }
 
 }

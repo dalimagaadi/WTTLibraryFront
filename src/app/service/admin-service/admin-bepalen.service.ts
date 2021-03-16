@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 import {User} from '../../model/User';
 import {HttpClient} from '@angular/common/http';
 
@@ -6,7 +7,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminBepalenService {
-
+  private currentUserSubject = new BehaviorSubject({});
+  currentUserObservable = this.currentUserSubject.asObservable();
   private _url = "http://localhost:8082/searchUser/";
   constructor(private http: HttpClient) { }
 
@@ -16,6 +18,9 @@ export class AdminBepalenService {
     return this.http.get(this._url + email+"/" + password)
   }
 
+  setUser(user:User){
+    this.currentUserSubject.next(user);
+  }
   admin(isAdmin:boolean){
     if(isAdmin === true){
       sessionStorage.setItem('isAdmin', 'Hoi');
@@ -25,7 +30,6 @@ export class AdminBepalenService {
   }
 
   isUserAdmin(user: User){   
-    console.log(user.adminrights) 
-    return !(user === null)
+    return user.adminrights;
   }
 }

@@ -18,12 +18,10 @@ export class BoekenzoekenComponent implements OnInit {
 
   }
   testing(event){
-    console.log(event)
   }
   searchBoeken(){
     this._boekService.searchBoeken(this.zoekTerm).subscribe((boeken: Boek[])=>{
       this.gevondenBoeken = boeken;
-      console.log(this.gevondenBoeken)
     })
   }
 
