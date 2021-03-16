@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {User} from '../../model/User';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -15,23 +16,16 @@ export class AdminBepalenService {
     return this.http.get(this._url + email+"/" + password)
   }
 
+  admin(isAdmin:boolean){
+    if(isAdmin === true){
+      sessionStorage.setItem('isAdmin', 'Hoi');
+      return true
+    }
+    return false;
+  }
 
-
-
-
-
-
-
-  // admin(isAdmin:boolean){
-  //   if(isAdmin === true){
-  //     sessionStorage.setItem('isAdmin', 'Hoi');
-  //     return true
-  //   }
-  //   return false;
-  // }
-
-  // isUserAdmin(){
-  //   let user = sessionStorage.getItem('isAdmin')
-  //   return !(user === null)
-  // }
+  isUserAdmin(user: User){   
+    console.log(user.adminrights) 
+    return !(user === null)
+  }
 }
