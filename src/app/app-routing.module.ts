@@ -8,7 +8,6 @@ import { BoektoevoegenComponent } from './boektoevoegen/boektoevoegen.component'
 import { ErrorComponent } from './error/error.component';
 import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
 import { ContactComponent } from './contact/contact.component';
-import { BoekaanvraagComponent } from './boekaanvraag/boekaanvraag.component';
 import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.component';
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
 import { RapportagesComponent } from './rapportages/rapportages.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'welkom', component: WelkomComponent, canActivate: [RouteGuardService] },
   { path: 'boekenzoeken', component: BoekenzoekenComponent, canActivate: [RouteGuardService] },
-  { path: 'boekaanvraag', component: BoekaanvraagComponent, canActivate: [RouteGuardService] },
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'contact', component: ContactComponent, canActivate: [RouteGuardService] },
   { path: 'winkelwagen', component: WinkelwagenComponent, canActivate: [RouteGuardService] },
