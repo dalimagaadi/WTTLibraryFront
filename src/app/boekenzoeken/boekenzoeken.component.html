@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="wrap">
     <div class="search">
-       <input type="text" name="zoekTerm" class="searchTerm" placeholder="Naar welk boek op je opzoek?" [(ngModel)]="zoekTerm">
+       <input type="text" name="zoekTerm" class="searchTerm" placeholder="Naar welk boek ben je opzoek?" [(ngModel)]="zoekTerm">
        <button type="submit" class="searchButton" (click)="searchBoeken()">
          <i class="fa fa-search"></i>
       </button>
@@ -16,7 +16,7 @@
         
         <thead>
             <tr>
-                <th style="white-space:nowrap">#</th>
+                <th style="white-space:nowrap">ISBN</th>
                 <th style="white-space:nowrap">Titel</th>
                 <th style="white-space:nowrap">Auteur</th>
                 <th style="white-space:nowrap">Aantal beschikbaar</th>       

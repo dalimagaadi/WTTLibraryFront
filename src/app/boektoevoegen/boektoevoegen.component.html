@@ -1,2 +1,9 @@
-<input id=addbook type="text" placeholder="Voeg boek toe" [(ngModel)]="auteur">
-<button (click)=handleAddBook()>Go!</button>
+<div class="form-style-6">
+    <h1>Boek toevoegen</h1>
+<input id=addbookISBN type="text" placeholder="Voer het ISBN in" [(ngModel)]="isbn">
+<input id=addbookTitel type="text" placeholder="Voer de titel in" [(ngModel)]="titel">
+<input id=addbookAuteur type="text" placeholder="Voer de auteur in" [(ngModel)]="auteur">
+<input id=addbookTags type="text" placeholder="Voer de tags in" [(ngModel)]="tags">
+<input id=addbookAantal type="text" placeholder="Voer het aantal in" [(ngModel)]="aantal">
+<button type="submit" (click)=handleAddBook();>Toevoegen!</button>
+</div>
