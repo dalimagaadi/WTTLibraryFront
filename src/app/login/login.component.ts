@@ -6,18 +6,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+  styleUrls: ['./login.component.css']})
+
 export class LoginComponent implements OnInit {
   userName: string; 
   password: string;
   gevondenUser: User;
 
-
-
   constructor(private router: Router,
-    private AdminBepalenService: AdminBepalenService
-  ) { }
+    private AdminBepalenService: AdminBepalenService) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +23,7 @@ export class LoginComponent implements OnInit {
       this.AdminBepalenService.searchUser(this.userName,this.password).subscribe((gebruiker: User)=>{
       this.gevondenUser=gebruiker;
       if (this.gevondenUser==null){
-        alert("joejoe")
-        
+        alert("Helaas, dit is niet het juiste wachtwoord. Probeer het nog een keer.")  
       } 
       else{
         this.AdminBepalenService.setUser(gebruiker);

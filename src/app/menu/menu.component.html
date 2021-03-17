@@ -12,17 +12,17 @@
     </div>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <ul class="navbar-nav">
-            <li> <a class="nav-link" routerLink="welkom">Home</a> </li>
-            <li> <a class="nav-link" routerLink="boekenzoeken">Boeken zoeken</a></li>
-            <li> <a *ngIf="!isUserAdmin" class="nav-link" routerLink="winkelwagen">Winkelwagen</a></li>
-            <li> <a *ngIf="!isUserAdmin" class="nav-link" routerLink="boekaanvraag">Boek aanvragen</a></li>
-            <li> <a *ngIf="!isUserAdmin" class="nav-link" routerLink="contact">Contact</a></li>
-            <li> <a *ngIf="isUserAdmin" class="nav-link" routerLink="rapportages">Rapportages</a></li>
-            <li> <a *ngIf="isUserAdmin" class="nav-link" routerLink="boektoevoegen">Boek toevoegen</a></li>
+            <li> <a *ngIf="adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="welkom">Home</a> </li>
+            <li> <a *ngIf="adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="boekenzoeken">Boeken zoeken</a></li>
+            <li> <a *ngIf="!isUserAdmin && adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="winkelwagen">Winkelwagen</a></li>
+            <li> <a *ngIf="!isUserAdmin && adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="boekaanvraag">Boek aanvragen</a></li>
+            <li> <a *ngIf="!isUserAdmin && adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="contact">Contact</a></li>
+            <li> <a *ngIf="isUserAdmin && adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="rapportages">Rapportages</a></li>
+            <li> <a *ngIf="isUserAdmin && adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="boektoevoegen">Boek toevoegen</a></li>
         </ul>
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li> <a class="nav-link" routerLink="login">Login</a></li>
-            <li> <a class="nav-link" routerLink="logout">Logout</a></li>
+            <li> <a *ngIf="!adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="login">Login</a></li>
+            <li> <a *ngIf="adminBepalenService.isUserLoggedIn()" class="nav-link" routerLink="logout">Logout</a></li>
         </ul>
     </nav>
 </header>

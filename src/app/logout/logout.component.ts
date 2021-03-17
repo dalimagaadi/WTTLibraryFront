@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private AdminBepalenService: AdminBepalenService
+  ) { }
 
   ngOnInit(): void {
+    this.AdminBepalenService.logout();
   }
 
 }

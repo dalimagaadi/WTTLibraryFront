@@ -12,21 +12,23 @@ import { BoekaanvraagComponent } from './boekaanvraag/boekaanvraag.component';
 import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.component';
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
 import { RapportagesComponent } from './rapportages/rapportages.component';
+import { RouteGuardService } from './service/route-guard.service';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
 
   { path: 'login', component: LoginComponent },
-  { path: 'welkom', component: WelkomComponent },
-  { path: 'boekenzoeken', component: BoekenzoekenComponent },
-  { path: 'boekaanvraag', component: BoekaanvraagComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'winkelwagen', component: WinkelwagenComponent },
-  { path: 'rapportages', component: RapportagesComponent },
-  { path: 'boektoevoegen', component: BoektoevoegenComponent },
-  { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent },
-  { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent },
+  { path: 'welkom', component: WelkomComponent, canActivate: [RouteGuardService] },
+  { path: 'boekenzoeken', component: BoekenzoekenComponent, canActivate: [RouteGuardService] },
+  { path: 'boekaanvraag', component: BoekaanvraagComponent, canActivate: [RouteGuardService] },
+  { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
+  { path: 'contact', component: ContactComponent, canActivate: [RouteGuardService] },
+  { path: 'winkelwagen', component: WinkelwagenComponent, canActivate: [RouteGuardService] },
+  { path: 'rapportages', component: RapportagesComponent, canActivate: [RouteGuardService] },
+  { path: 'boektoevoegen', component: BoektoevoegenComponent, canActivate: [RouteGuardService] },
+  { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent, canActivate: [RouteGuardService] },
+  { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent, canActivate: [RouteGuardService] },
 
   { path: '**', component: ErrorComponent },
 ];
