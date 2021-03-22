@@ -12,6 +12,8 @@ import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.c
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
 import { RapportagesComponent } from './rapportages/rapportages.component';
 import { RouteGuardService } from './service/route-guard.service';
+import { AdminRouteGuardService } from './service/route-guard.service';
+
 
 
 const routes: Routes = [
@@ -23,7 +25,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'contact', component: ContactComponent, canActivate: [RouteGuardService] },
   { path: 'winkelwagen', component: WinkelwagenComponent, canActivate: [RouteGuardService] },
-  { path: 'rapportages', component: RapportagesComponent, canActivate: [RouteGuardService] },
+  { path: 'rapportages', component: RapportagesComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
   { path: 'boektoevoegen', component: BoektoevoegenComponent, canActivate: [RouteGuardService] },
   { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent, canActivate: [RouteGuardService] },
   { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent, canActivate: [RouteGuardService] },

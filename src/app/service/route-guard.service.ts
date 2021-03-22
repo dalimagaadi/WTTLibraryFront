@@ -18,5 +18,20 @@ export class RouteGuardService implements CanActivate {
     this.router.navigate(['login']);
     return false;
   }
-
 }
+
+export class AdminRouteGuardService implements CanActivate{
+  constructor(private AdminBepalenService: AdminBepalenService,
+    private router: Router) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+    let admin = sessionStorage.getItem('adminrights')
+    var adminbool: Boolean = Boolean(admin);
+    if (adminbool == true)
+      return true;
+    this.router.navigate(['welkom']);
+    return false;
+  }
+}
+
+
