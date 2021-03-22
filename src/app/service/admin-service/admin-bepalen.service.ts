@@ -51,7 +51,9 @@ export class AdminBepalenService {
   //   return false;
   // }
 
-  isUserAdmin(user: User){   
+  isUserAdmin(user: User){ 
+    var adminrechten: string = String(user.adminrights);
+    sessionStorage.setItem('adminrights', adminrechten)  
     return user.adminrights;
   }
 
