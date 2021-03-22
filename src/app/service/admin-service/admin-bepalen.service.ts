@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import {User} from '../../model/User';
 import {HttpClient} from '@angular/common/http';
+//new
+import { HttpHeaders } from '@angular/common/http';
+//corine
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,15 @@ export class AdminBepalenService {
   private currentUserSubject = new BehaviorSubject({});
   currentUserObservable = this.currentUserSubject.asObservable();
   private _url = "http://localhost:8082/searchUser/";
+
+  //new
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  }
+  //corine
+
   constructor(private http: HttpClient) { }
 
   searchUser(email: string, password: string){
@@ -42,4 +54,11 @@ export class AdminBepalenService {
   isUserAdmin(user: User){   
     return user.adminrights;
   }
+
+
+//new
+  addUser(user:User){
+    return this.http.post("http://localhost:8082/addUser",user, this.httpOptions);
+  }
 }
+//corine
