@@ -6,4 +6,5 @@
 <input id=addbookTags type="text" placeholder="Voer de tags in" [(ngModel)]="tags">
 <input id=addbookAantal type="text" placeholder="Voer het aantal in" [(ngModel)]="aantal">
 <button type="submit" (click)=handleAddBook();>Toevoegen!</button>
+<small id=addSuccess *ngIf='toegevoegdStatus'>{{toegevoegd}}</small>
 </div>
