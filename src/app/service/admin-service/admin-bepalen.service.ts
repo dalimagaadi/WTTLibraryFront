@@ -57,6 +57,12 @@ export class AdminBepalenService {
     return user.adminrights;
   }
 
+  determineAdmin(){
+    let admin = sessionStorage.getItem('adminrights')
+    var adminbool: Boolean = Boolean(admin);
+    return adminbool
+  }
+
 
 //new
   addUser(user:User){
