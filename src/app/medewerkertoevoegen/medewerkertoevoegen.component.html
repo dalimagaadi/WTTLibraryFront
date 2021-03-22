@@ -1,1 +1,10 @@
-<p>medewerkertoevoegen works!</p>
+<div class="form-style-6">
+    <h1>Gebruiker toevoegen</h1>
+<input id=addUserVoornaam type="text" placeholder="Voornaam" [(ngModel)]="voornaam">
+<input id=addUserAchternaam type="text" placeholder="Achternaam" [(ngModel)]="achternaam">
+<input id=addUserEmail type="text" placeholder="Emailadres" [(ngModel)]="email">
+<input id=addUserPassword type="text" placeholder="Wachtwoord" [(ngModel)]="password">
+<input id=addUserAdminrights type="text" placeholder="Admin (true/false)" [(ngModel)]="adminrights">
+<button type="submit" (click)=handleAddUser();>Toevoegen</button>
+{{message}}
+</div>
