@@ -31,7 +31,9 @@
                 <td style="white-space:nowrap">{{boek.auteur}}</td>
                 <td style="white-space:nowrap">{{boek.aantal}}</td>
 
-                <td style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
+                <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
+                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Bewerk boek" </button></td>
+
             </tr>
         </tbody>
     </table>
