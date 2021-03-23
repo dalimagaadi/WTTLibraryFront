@@ -13,25 +13,32 @@ export class RouteGuardService implements CanActivate {
     private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.AdminBepalenService.isUserLoggedIn())
+    if (this.AdminBepalenService.isUserLoggedIn()) {
       return true;
-    this.router.navigate(['login']);
-    return false;
+    }
+    else {
+      this.router.navigate(['login']);
+      return false;
+    }
   }
 }
 
-export class AdminRouteGuardService implements CanActivate{
+@Injectable({
+  providedIn: 'root'
+})
+export class AdminRouteGuardService implements CanActivate {
   constructor(private AdminBepalenService: AdminBepalenService,
     private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    let admin = sessionStorage.getItem('adminrights')
-    var adminbool: Boolean = Boolean(admin);
-    if (adminbool == true)
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  let admin = sessionStorage.getItem('adminrights')
+    if (admin === "true") {
       return true;
-    this.router.navigate(['welkom']);
-    return false;
+    }
+    else {
+      this.router.navigate(['welkom']);
+      return false;
+    }
   }
+
 }
-
-

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import {User} from '../../model/User';
-import {HttpClient} from '@angular/common/http';
+import { User } from '../../model/User';
+import { HttpClient } from '@angular/common/http';
 //new
 import { HttpHeaders } from '@angular/common/http';
 //corine
@@ -10,7 +10,8 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class AdminBepalenService {
+export class AdminBepalenService  {
+
   private currentUserSubject = new BehaviorSubject({});
   currentUserObservable = this.currentUserSubject.asObservable();
   private _url = "http://localhost:8082/searchUser/";
@@ -18,31 +19,41 @@ export class AdminBepalenService {
   //new
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type': 'application/json'
     })
   }
   //corine
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+  let object = {}
+  object['adminrights'] = sessionStorage.getItem('adminrights');
+  object['voornaam'] = sessionStorage.getItem('voornaamitem')
+  this.currentUserSubject.next(object)
 
-  searchUser(email: string, password: string){
-    return this.http.get(this._url + email+"/" + password)
   }
 
+  searchUser(email: string, password: string) {
+    return this.http.get(this._url + email + "/" + password)
+  }
+  
   setUser(user:User){
-    this.currentUserSubject.next(user);
-    sessionStorage.setItem('authenticatedUser', user.email)
-  }
+      console.log("Called")
+      this.currentUserSubject.next(user);
+      sessionStorage.setItem('authenticatedUser', user.email)
+      sessionStorage.setItem('voornaamitem', user.voornaam)
+      let adminrechten = this.isUserAdmin(user);
+      sessionStorage.setItem('adminrights', String(adminrechten)) 
+      }
 
-  isUserLoggedIn(){
+  isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticatedUser')
     return !(user === null)
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('authenticatedUser')
   }
-  
+
   // admin(isAdmin:boolean){
   //   if(isAdmin === true){
   //     sessionStorage.setItem('isAdmin', 'Hoi');
@@ -51,22 +62,23 @@ export class AdminBepalenService {
   //   return false;
   // }
 
-  isUserAdmin(user: User){ 
+  isUserAdmin(user: User) {
     var adminrechten: string = String(user.adminrights);
-    sessionStorage.setItem('adminrights', adminrechten)  
-    return user.adminrights;
+    if (adminrechten === "true")
+      return true;
+    return false;
   }
 
-  determineAdmin(){
-    let admin = sessionStorage.getItem('adminrights')
-    var adminbool: Boolean = Boolean(admin);
-    return adminbool
-  }
+determineAdmin(){
+  let admin = sessionStorage.getItem('adminrights')
+  var adminbool: Boolean = Boolean(admin);
+  return adminbool
+}
 
 
 //new
-  addUser(user:User){
-    return this.http.post("http://localhost:8082/addUser",user, this.httpOptions);
-  }
+addUser(user: User){
+  return this.http.post("http://localhost:8082/addUser", user, this.httpOptions);
+}
 }
 //corine
