@@ -37,7 +37,7 @@ handleAddBook(){
   boek.status="Beschikbaar";
   boek.titel=this.titel;
   console.log("this.auteur"+this.auteur)
-  this._boekService.addBook(boek).subscribe(()=>{    
+  this._boekService.addBook(boek).subscribe((res)=>{    console.log(res)
   }) 
   this.auteur=null;
   this.aantal=null;

@@ -34,7 +34,10 @@ export class BoekenzoekenComponent implements OnInit {
     })
   }
 
-  exemplaartoevoegen(isbn){
-    this._boekService.addExemplaar(isbn)
+   exemplaartoevoegen(isbn){
+    this._boekService.getExemplaarAmount(isbn).subscribe((amount: number)=>{
+      this._boekService.addExemplaar(isbn, amount).subscribe((res)=>{  console.log(res)  
+      })
+    }) 
   }
 }

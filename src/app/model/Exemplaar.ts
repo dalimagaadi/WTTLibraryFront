@@ -1,5 +1,5 @@
 export class Exemplaar{
-    WTid: string;
+    wtid: string;
     status: string;
     id: string;
 }

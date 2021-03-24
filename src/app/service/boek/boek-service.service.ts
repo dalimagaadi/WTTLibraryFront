@@ -15,6 +15,7 @@ export class BoekServiceService {
       'Content-Type':  'application/json'
     })
   };
+
   
   constructor(private http: HttpClient) { }
 
@@ -28,19 +29,18 @@ export class BoekServiceService {
     return this.http.post("http://localhost:8082/addBoek",boek, this.httpOptions);
   }
 
-  addExemplaar(isbn: string){
+  addExemplaar(isbn: string, amount: number){
      let exemplaar = new Exemplaar()
-    // this.http.get(`http://localhost:8082/searchExemplaarAmount/${isbn}`).subscribe((int=>{exemplaar.WTid = isbn + "." + String(int)}))
-    exemplaar.WTid = "1"
-    exemplaar.status = "Beschikbaar"
-   console.log(exemplaar)
-     return this.http.post("http://localhost:8082/addExemplaar/" + isbn, exemplaar, this.httpOptions)
-  // }
+     exemplaar.wtid = isbn + "." + String(amount +1)
+     exemplaar.status = "Beschikbaar"
+
+    return this.http.post(`http://localhost:8082/addExemplaar/${isbn}`, exemplaar, this.httpOptions)
+
   }
 
-//  opslaanExemplaarAmount(isbn: string):Observable<Int>{
-//   return 
-//  }
+ getExemplaarAmount(isbn: string){
+  return this.http.get(`http://localhost:8082/searchExemplaarAmount/${isbn}`); 
+ }
 
 
 }
