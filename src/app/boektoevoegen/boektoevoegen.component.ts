@@ -35,8 +35,7 @@ handleAddBook(){
   boek.isbn=this.isbn;
   boek.tags=this.tags;
   boek.status="Beschikbaar";
-  boek.titel=this.titel;
-  console.log("this.auteur"+this.auteur)
+  boek.titel=this.titel;  
   this._boekService.addBook(boek).subscribe((res)=>{    console.log(res)
   }) 
   this.auteur=null;
@@ -47,7 +46,7 @@ handleAddBook(){
   this.toegevoegdStatus=true;
   setTimeout(() => {
     this.toegevoegdStatus=false;
-  }, 4000); 
+  }, 3000); 
 }
 }
   

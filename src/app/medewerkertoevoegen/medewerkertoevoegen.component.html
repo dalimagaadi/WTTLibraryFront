@@ -4,7 +4,8 @@
 <input id=addUserAchternaam type="text" placeholder="Achternaam" [(ngModel)]="achternaam">
 <input id=addUserEmail type="text" placeholder="Emailadres" [(ngModel)]="email">
 <input id=addUserPassword type="text" placeholder="Wachtwoord" [(ngModel)]="password">
-<input id=addUserAdminrights type="text" placeholder="Admin (true/false)" [(ngModel)]="adminrights">
+<input id=addUserAdminrights type="checkbox" [(ngModel)]="adminrights">Admin rechten <br>
+<br>
 <button type="submit" (click)=handleAddUser();>Toevoegen</button>
-{{message}}
+<small id=addSuccess *ngIf='toegevoegdStatus'>{{toegevoegd}}</small>
 </div>

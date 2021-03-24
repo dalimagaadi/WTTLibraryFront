@@ -13,7 +13,9 @@ voornaam: string;
 achternaam: string;
 email: string;
 password: string;
-adminrights: boolean;
+adminrights: boolean =false;
+toegevoegdStatus=false;
+toegevoegd="Gebruiker is succesvol toegevoegd!"
 
 message: string;
 
@@ -23,17 +25,27 @@ message: string;
   }
 
 handleAddUser(){
+  if (this.voornaam==null||this.achternaam==null||this.email==null||this.password==null){
+    alert("Er is een veld niet ingevuld. Vul dit eerst in om de user toe te voegen.")  
+  } 
+  else{
   let user = new User();
-user.voornaam = this.voornaam;
-user.achternaam = this.achternaam;
-user.email = this.email;
-user.password = this.password;
-user.adminrights = this.adminrights;
-this.AdminBepalenService.addUser(user).subscribe(()=>{
-})
-console.log(this.voornaam);
-this.message = "Gebruiker is toegevoegd";
+  user.voornaam = this.voornaam;
+  user.achternaam = this.achternaam;
+  user.email = this.email;
+  user.password = this.password;
+  user.adminrights = this.adminrights;
+  this.AdminBepalenService.addUser(user).subscribe(()=>{
+  })
+  this.voornaam=null;
+  this.achternaam=null;
+  this.email=null;
+  this.password=null;
+  this.toegevoegdStatus=true;
+  setTimeout(() => {
+    this.toegevoegdStatus=false;
+  }, 3000); 
 }
-
+}
 
 }
