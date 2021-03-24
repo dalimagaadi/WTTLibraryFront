@@ -33,6 +33,7 @@
 
                 <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
                 <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Bewerk boek" </button></td>
+                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=exemplaartoevoegen(boek.isbn)>"Voeg exemplaar toe" </button></td>
 
             </tr>
         </tbody>
