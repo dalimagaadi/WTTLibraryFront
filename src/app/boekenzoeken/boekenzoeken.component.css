@@ -55,8 +55,8 @@ body{
 
 .zoeklijst{
     width: 30%;
-    position: absolute;
-    top: 52%;
+    position: relative;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
   }

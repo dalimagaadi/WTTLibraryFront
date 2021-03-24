@@ -25,6 +25,11 @@ export class BoekServiceService {
     return this.http.get(this._url + searchTerm)
   }
 
+  searchAllBoeken(){
+    return this.http.get("http://localhost:8082/searchAllBook")
+  }
+
+
   addBook(boek:Boek){
     return this.http.post("http://localhost:8082/addBoek",boek, this.httpOptions);
   }

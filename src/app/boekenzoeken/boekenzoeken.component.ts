@@ -14,15 +14,18 @@ export class BoekenzoekenComponent implements OnInit {
   zoekTerm: string; 
   isUserAdmin: boolean = false;
   gevondenBoeken: Boek[] = [];
+  gevondenAllBoeken: Boek[] = [];
   constructor(private _boekService: BoekServiceService, public adminBepalenService: AdminBepalenService) { }
+  zoekTermAanwezig: boolean = false;
 
   
  
 
   ngOnInit() {
+    this.searchAllBoeken();
+    this.zoekChecker()
     this.adminBepalenService.currentUserObservable.subscribe((_currentUser: User)=>{
       this.isUserAdmin = this.adminBepalenService.isUserAdmin(_currentUser);
-      console.log(this.isUserAdmin)
 })
 
   }
@@ -31,8 +34,30 @@ export class BoekenzoekenComponent implements OnInit {
   searchBoeken(){
     this._boekService.searchBoeken(this.zoekTerm).subscribe((boeken: Boek[])=>{
       this.gevondenBoeken = boeken;
+      if (this.gevondenBoeken.length > 0){
+        this.zoekTermAanwezig = true;
+      }
+      else{
+        this.zoekTermAanwezig = false;
+      }
     })
   }
+
+  searchAllBoeken(){
+    this._boekService.searchAllBoeken().subscribe((allboeken: Boek[])=>{
+      this.gevondenAllBoeken = allboeken;
+    })
+  }
+
+  zoekChecker(){
+    if (this.gevondenBoeken.length > 0){
+      this.zoekTermAanwezig = true;
+    }
+    else{
+      this.zoekTermAanwezig = false;
+    }
+    }
+  
 
    exemplaartoevoegen(isbn){
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number)=>{
