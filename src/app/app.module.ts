@@ -13,6 +13,7 @@ import { BoekenzoekenComponent} from './boekenzoeken/boekenzoeken.component';
 import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.component';
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
 import { FooterComponent } from './footer/footer.component';
+import { BoekbewerkenComponent } from './boekbewerken/boekbewerken.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     MedewerkerzoekenComponent,
     MedewerkertoevoegenComponent,
     BoekenzoekenComponent,
-    FooterComponent
+    FooterComponent,
+    BoekbewerkenComponent
   ],
   imports: [
     BrowserModule,

@@ -1,68 +1,75 @@
 import { Component, OnInit } from '@angular/core';
-import {Boek} from "../model/Boek";
-import {BoekServiceService} from '../service/boek/boek-service.service'
+import { Boek } from "../model/Boek";
+import { BoekServiceService } from '../service/boek/boek-service.service'
 import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
-import {User} from "../model/User";
-
+import { User } from "../model/User";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boekenzoeken',
   templateUrl: './boekenzoeken.component.html',
   styleUrls: ['./boekenzoeken.component.css']
 })
+
 export class BoekenzoekenComponent implements OnInit {
-  zoekTerm: string; 
+  zoekTerm: string;
   isUserAdmin: boolean = false;
   gevondenBoeken: Boek[] = [];
   gevondenAllBoeken: Boek[] = [];
-  constructor(private _boekService: BoekServiceService, public adminBepalenService: AdminBepalenService) { }
-  zoekTermAanwezig: boolean = false;
 
-  
- 
+  constructor(private _boekService: BoekServiceService,
+    public adminBepalenService: AdminBepalenService,
+    private router: Router) { }
+
+  zoekTermAanwezig: boolean = false;
 
   ngOnInit() {
     this.searchAllBoeken();
     this.zoekChecker()
-    this.adminBepalenService.currentUserObservable.subscribe((_currentUser: User)=>{
+    this.adminBepalenService.currentUserObservable.subscribe((_currentUser: User) => {
       this.isUserAdmin = this.adminBepalenService.isUserAdmin(_currentUser);
-})
+    })
+  }
 
+  testing(event) {
   }
-  testing(event){
-  }
-  searchBoeken(){
-    this._boekService.searchBoeken(this.zoekTerm).subscribe((boeken: Boek[])=>{
+  
+  searchBoeken() {
+    this._boekService.searchBoeken(this.zoekTerm).subscribe((boeken: Boek[]) => {
       this.gevondenBoeken = boeken;
-      if (this.gevondenBoeken.length > 0){
+      if (this.gevondenBoeken.length > 0) {
         this.zoekTermAanwezig = true;
       }
-      else{
+      else {
         this.zoekTermAanwezig = false;
       }
     })
   }
 
-  searchAllBoeken(){
-    this._boekService.searchAllBoeken().subscribe((allboeken: Boek[])=>{
+  searchAllBoeken() {
+    this._boekService.searchAllBoeken().subscribe((allboeken: Boek[]) => {
       this.gevondenAllBoeken = allboeken;
     })
   }
 
-  zoekChecker(){
-    if (this.gevondenBoeken.length > 0){
+  zoekChecker() {
+    if (this.gevondenBoeken.length > 0) {
       this.zoekTermAanwezig = true;
     }
-    else{
+    else {
       this.zoekTermAanwezig = false;
     }
-    }
-  
+  }
 
-   exemplaartoevoegen(isbn){
-    this._boekService.getExemplaarAmount(isbn).subscribe((amount: number)=>{
-      this._boekService.addExemplaar(isbn, amount).subscribe((res)=>{  console.log(res)  
+  bewerkBoek(isbn) {
+    this.router.navigate(['boekbewerken', isbn])
+  }
+
+  exemplaartoevoegen(isbn) {
+    this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
+      this._boekService.addExemplaar(isbn, amount).subscribe((res) => {
+        console.log(res)
       })
-    }) 
+    })
   }
 }

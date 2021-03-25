@@ -13,12 +13,10 @@ import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkerto
 import { RapportagesComponent } from './rapportages/rapportages.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { AdminRouteGuardService } from './service/route-guard.service';
-
-
+import { BoekbewerkenComponent } from './boekbewerken/boekbewerken.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-
   { path: 'login', component: LoginComponent },
   { path: 'welkom', component: WelkomComponent, canActivate: [RouteGuardService] },
   { path: 'boekenzoeken', component: BoekenzoekenComponent, canActivate: [RouteGuardService] },
@@ -29,7 +27,7 @@ const routes: Routes = [
   { path: 'boektoevoegen', component: BoektoevoegenComponent, canActivate: [RouteGuardService] },
   { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent, canActivate: [RouteGuardService] },
   { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent, canActivate: [RouteGuardService] },
-
+  { path: 'boekbewerken/:isbn', component: BoekbewerkenComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
   { path: '**', component: ErrorComponent },
 ];
 
@@ -38,4 +36,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AdminRouteGuardService]
 })
+
 export class AppRoutingModule { }
