@@ -14,6 +14,7 @@ import { MedewerkerzoekenComponent } from './medewerkerzoeken/medewerkerzoeken.c
 import { MedewerkertoevoegenComponent } from './medewerkertoevoegen/medewerkertoevoegen.component';
 import { FooterComponent } from './footer/footer.component';
 import { BoekbewerkenComponent } from './boekbewerken/boekbewerken.component';
+import { BoekpaginaComponent } from './boekpagina/boekpagina.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BoekbewerkenComponent } from './boekbewerken/boekbewerken.component';
     MedewerkertoevoegenComponent,
     BoekenzoekenComponent,
     FooterComponent,
-    BoekbewerkenComponent
+    BoekbewerkenComponent,
+    BoekpaginaComponent
   ],
   imports: [
     BrowserModule,

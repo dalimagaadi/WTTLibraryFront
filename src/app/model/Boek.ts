@@ -6,5 +6,5 @@ export class Boek{
     status?: string;
     aantal: number;
     isbn: string;
-    exemplaar?: Exemplaar;
+    exemplaren: Exemplaar [];
 }

@@ -14,6 +14,7 @@ import { RapportagesComponent } from './rapportages/rapportages.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { AdminRouteGuardService } from './service/route-guard.service';
 import { BoekbewerkenComponent } from './boekbewerken/boekbewerken.component';
+import { BoekpaginaComponent } from './boekpagina/boekpagina.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,10 +25,11 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, canActivate: [RouteGuardService] },
   { path: 'winkelwagen', component: WinkelwagenComponent, canActivate: [RouteGuardService] },
   { path: 'rapportages', component: RapportagesComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
-  { path: 'boektoevoegen', component: BoektoevoegenComponent, canActivate: [RouteGuardService] },
-  { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent, canActivate: [RouteGuardService] },
-  { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent, canActivate: [RouteGuardService] },
+  { path: 'boektoevoegen', component: BoektoevoegenComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
+  { path: 'medewerkerzoeken', component: MedewerkerzoekenComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
+  { path: 'medewerkertoevoegen', component: MedewerkertoevoegenComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
   { path: 'boekbewerken/:isbn', component: BoekbewerkenComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
+  { path: 'boekpagina/:isbn', component: BoekpaginaComponent, canActivate: [RouteGuardService, AdminRouteGuardService] },
   { path: '**', component: ErrorComponent },
 ];
 

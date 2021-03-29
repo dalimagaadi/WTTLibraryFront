@@ -1,0 +1,19 @@
+
+
+<table class="Exemplarenlijst" border="1" align="center">
+        
+    <thead>
+        <tr>
+            <th style="white-space:nowrap">WTid</th>
+            <th style="white-space:nowrap">Status</th>
+            <th style="white-space:nowrap">Gebruiker?</th>             
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let exemplaar of boek.exemplaren">
+
+            <td style="white-space:nowrap">{{exemplaar.wtid}}</td>
+            <td style="white-space:nowrap">{{exemplaar.status}}</td>
+        </tr>
+    </tbody>
+</table>

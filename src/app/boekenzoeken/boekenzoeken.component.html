@@ -24,7 +24,8 @@
     </thead>
     <tbody>
         <tr *ngFor= "let boek of gevondenAllBoeken">
-            <td style="white-space:nowrap">{{boek.isbn}}</td>
+            <!-- corine --> <td *ngIf="!isUserAdmin"  style="white-space:nowrap" ><b>{{boek.isbn}} </b></td> <!-- corine --> 
+           <!-- corine --> <td *ngIf="isUserAdmin" class="isbn" style="white-space:nowrap" (click)=naarpagina(boek.isbn)><b>{{boek.isbn}} </b></td> <!-- corine --> 
             <td style="white-space:nowrap">{{boek.titel}}</td>
             <td style="white-space:nowrap">{{boek.auteur}}</td>
             <td style="white-space:nowrap">{{boek.aantal}}</td>
@@ -51,7 +52,8 @@
         </thead>
         <tbody>
             <tr *ngFor= "let boek of gevondenBoeken">
-                <td style="white-space:nowrap">{{boek.isbn}}</td>
+                 <!-- corine --> <td *ngIf="!isUserAdmin"  style="white-space:nowrap" ><b>{{boek.isbn}} </b></td> <!-- corine --> 
+           <!-- corine --> <td *ngIf="isUserAdmin" class="isbn" style="white-space:nowrap" (click)=naarpagina(boek.isbn)><b>{{boek.isbn}} </b></td> <!-- corine --> 
                 <td style="white-space:nowrap">{{boek.titel}}</td>
                 <td style="white-space:nowrap">{{boek.auteur}}</td>
                 <td style="white-space:nowrap">{{boek.aantal}}</td>

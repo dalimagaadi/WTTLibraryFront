@@ -1,8 +1,9 @@
 <div class="form-style-6">
     <h1>Boek bewerken</h1>
-    <input id=addbookISBN [(ngModel)]="boek.isbn" type="text" placeholder="Voer het ISBN in">
-    <input id=addbookTitel [(ngModel)]="boek.titel" type="text" placeholder="Voer de titel in">
-    <input id=addbookAuteur [(ngModel)]="boek.auteur" type="text" placeholder="Voer de auteur in">
-    <input id=addbookTags [(ngModel)]="boek.tags" type="text" placeholder="Voer de tags in">
+    <b>ISBN: </b><div class=isbn>{{boek.isbn}}</div>
+    <!-- <input id=addbookISBN [(ngModel)]="boek.isbn" type="text" placeholder="Voer het ISBN in"> -->
+    <b>Titel: </b><input id=addbookTitel [(ngModel)]="boek.titel" type="text" placeholder="Voer de titel in">
+    <b>Auteur: </b><input id=addbookAuteur [(ngModel)]="boek.auteur" type="text" placeholder="Voer de auteur in">
+    <b>Tags: </b><input id=addbookTags [(ngModel)]="boek.tags" type="text" placeholder="Voer de tags in">
     <button type="submit" (click)="bewerkBoek()">Bewerk!</button>
 </div>
