@@ -2,13 +2,14 @@
     background-color:rgb(153, 190, 14);
     color:black;
 }
+
 .titel {
     background-color:rgb(20, 16, 16);
     color: white;
     font-size:60px;  
-    text-indent: 660px;
     height: 144px;
 }
+
 .plaatje{
     float:left;
     background-color:rgb(20, 16, 16);
