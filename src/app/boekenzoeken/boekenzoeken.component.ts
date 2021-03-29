@@ -16,6 +16,7 @@ export class BoekenzoekenComponent implements OnInit {
   isUserAdmin: boolean = false;
   gevondenBoeken: Boek[] = [];
   gevondenAllBoeken: Boek[] = [];
+  toegevoegd = "Er is een exemplaar toegevoegd."
 
   constructor(private _boekService: BoekServiceService,
     public adminBepalenService: AdminBepalenService,
@@ -65,11 +66,9 @@ export class BoekenzoekenComponent implements OnInit {
     this.router.navigate(['boekbewerken', isbn])
   }
 
-//corine
 naarpagina(isbn){
   this.router.navigate(['boekpagina', isbn])
 }
-//corine
 
   exemplaartoevoegen(isbn) {
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
@@ -77,5 +76,6 @@ naarpagina(isbn){
         console.log(res)
       })
     })
+    alert(this.toegevoegd);
   }
 }

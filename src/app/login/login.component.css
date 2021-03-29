@@ -1,5 +1,5 @@
 .searchTerm {
-    width: 30%%;
+    width: 30%;
     border: 3px solid rgb(153, 190, 14);
     padding: 5px;
     height: 36px;
@@ -13,7 +13,7 @@
     font-size:50px
 }
   .wrap{
-    width: 40%;
+    width: 62%;
     position: relative;
     top: 40%;
     left: 50%;
