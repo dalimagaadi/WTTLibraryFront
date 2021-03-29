@@ -17,6 +17,7 @@ export class BoektoevoegenComponent implements OnInit {
   tags: string;
   toegevoegdStatus=false;
   toegevoegd="Het boek is succesvol toegevoegd!"
+  
 
 
   constructor(private _boekService: BoekServiceService, private router: Router) { }
@@ -38,6 +39,10 @@ handleAddBook(){
   boek.titel=this.titel;  
   this._boekService.addBook(boek).subscribe((res)=>{    console.log(res)
   }) 
+  for (let i = 0; i < this.aantal; i++){   
+    this._boekService.addExemplaar(this.isbn, i).subscribe((res) => {     
+    })
+  }
   this.auteur=null;
   this.aantal=null;
   this.isbn=null;

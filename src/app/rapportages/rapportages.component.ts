@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-rapportages',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rapportages.component.css']
 })
 export class RapportagesComponent implements OnInit {
+  
+ 
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+
 
 }
