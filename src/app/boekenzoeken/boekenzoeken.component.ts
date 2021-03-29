@@ -65,6 +65,12 @@ export class BoekenzoekenComponent implements OnInit {
     this.router.navigate(['boekbewerken', isbn])
   }
 
+//corine
+naarpagina(isbn){
+  this.router.navigate(['boekpagina', isbn])
+}
+//corine
+
   exemplaartoevoegen(isbn) {
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
       this._boekService.addExemplaar(isbn, amount).subscribe((res) => {
