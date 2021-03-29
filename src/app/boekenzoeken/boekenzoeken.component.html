@@ -11,6 +11,8 @@
     </div>
  </div>
 
+ <br>
+
 <div class="lijstAllBoek" *ngIf="!zoekTermAanwezig">
  <table class="Allboeklijst" border="1" align="center">
         
@@ -24,20 +26,19 @@
     </thead>
     <tbody>
         <tr *ngFor= "let boek of gevondenAllBoeken">
-            <td style="white-space:nowrap">{{boek.isbn}}</td>
+            <td *ngIf="!isUserAdmin"  style="white-space:nowrap" ><b>{{boek.isbn}} </b></td>
+            <td *ngIf="isUserAdmin" class="isbn" style="white-space:nowrap" (click)=naarpagina(boek.isbn)><b>{{boek.isbn}} </b></td>
             <td style="white-space:nowrap">{{boek.titel}}</td>
             <td style="white-space:nowrap">{{boek.auteur}}</td>
             <td style="white-space:nowrap">{{boek.aantal}}</td>
 
-            <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
-            <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=bewerkBoek(boek.isbn)>"Bewerk boek" </button></td>
-            <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=exemplaartoevoegen(boek.isbn)>"Voeg exemplaar toe" </button></td>
-
+            <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">Plaats in winkelwagen </button></td>
+            <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=bewerkBoek(boek.isbn)>Bewerk boek </button></td>
+            <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=exemplaartoevoegen(boek.isbn)>Voeg exemplaar toe </button></td>
         </tr>
     </tbody>
 </table>
 </div>
-
  <div class="zoeklijst">
     <table class="boeklijst" border="1" align="center" *ngIf="gevondenBoeken.length > 0">
         
@@ -51,15 +52,15 @@
         </thead>
         <tbody>
             <tr *ngFor= "let boek of gevondenBoeken">
-                <td style="white-space:nowrap">{{boek.isbn}}</td>
+                <td *ngIf="!isUserAdmin"  style="white-space:nowrap" ><b>{{boek.isbn}} </b></td>
+                <td *ngIf="isUserAdmin" class="isbn" style="white-space:nowrap" (click)=naarpagina(boek.isbn)><b>{{boek.isbn}} </b></td> 
                 <td style="white-space:nowrap">{{boek.titel}}</td>
                 <td style="white-space:nowrap">{{boek.auteur}}</td>
                 <td style="white-space:nowrap">{{boek.aantal}}</td>
 
-                <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">"Plaats in winkelwagen" </button></td>
-                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=bewerkBoek(boek.isbn)>"Bewerk boek" </button></td>
-                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=exemplaartoevoegen(boek.isbn)>"Voeg exemplaar toe" </button></td>
-
+                <td *ngIf="!isUserAdmin" style="white-space:nowrap"><button type=button onclick="alert('Gereserveerd!')">Plaats in winkelwagen </button></td>
+                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=bewerkBoek(boek.isbn)>Bewerk boek </button></td>
+                <td *ngIf="isUserAdmin" style="white-space:nowrap"><button type=button (click)=exemplaartoevoegen(boek.isbn)>Voeg exemplaar toe </button></td>
             </tr>
         </tbody>
     </table>  

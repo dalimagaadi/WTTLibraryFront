@@ -79,3 +79,12 @@
 .form-style-6 input[type="button"]:hover{
 	background: #2EBC99;
 }
+
+.isbn{
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
