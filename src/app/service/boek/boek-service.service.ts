@@ -42,6 +42,10 @@ export class BoekServiceService {
     return this.http.get(`http://localhost:8082/searchExemplaarAmount/${isbn}`);
   }
 
+  getsearchBoekAantal(isbn: string) {
+    return this.http.get(`http://localhost:8082/searchBoekAantal/${isbn}`);
+  }
+  
   getBook(isbn: string) {
     return this.http.get<Boek>(`http://localhost:8082/getBoek/${isbn}`)
   }

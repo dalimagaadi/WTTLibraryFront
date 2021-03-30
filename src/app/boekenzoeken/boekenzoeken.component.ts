@@ -17,6 +17,7 @@ export class BoekenzoekenComponent implements OnInit {
   gevondenBoeken: Boek[] = [];
   gevondenAllBoeken: Boek[] = [];
   toegevoegd = "Er is een exemplaar toegevoegd."
+  boek: Boek;
 
   constructor(private _boekService: BoekServiceService,
     public adminBepalenService: AdminBepalenService,
@@ -73,9 +74,16 @@ naarpagina(isbn){
   exemplaartoevoegen(isbn) {
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
       this._boekService.addExemplaar(isbn, amount).subscribe((res) => {
-        console.log(res)
+        this._boekService.getBook(isbn)
+        .subscribe((jojo:Boek) => {jojo.aantal = jojo.aantal +1,
+        this._boekService.updateBook(isbn, jojo).subscribe(
+          data => {this.boek.aantal=jojo.aantal 
+            console.log(jojo)      
+          })
+          ;
+          })  
       })
-    })
-    alert(this.toegevoegd);
+    })    
+  
   }
 }
