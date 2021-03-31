@@ -13,7 +13,7 @@ export class AdminBepalenService  {
 
   private currentUserSubject = new BehaviorSubject({});
   currentUserObservable = this.currentUserSubject.asObservable();
-  private _url = "http://localhost:8082/searchUser/";
+  private _url = "http://localhost:8082/loginUser/";
 
   httpOptions = {
     headers: new HttpHeaders({
