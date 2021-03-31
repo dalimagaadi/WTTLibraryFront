@@ -77,8 +77,8 @@ naarpagina(isbn){
         this._boekService.getBook(isbn)
         .subscribe((jojo:Boek) => {jojo.aantal = jojo.aantal +1,
         this._boekService.updateBook(isbn, jojo).subscribe(
-          data => {this.boek.aantal=jojo.aantal 
-            console.log(jojo)      
+          data => { 
+            this.gevondenAllBoeken.find(x => x.isbn=isbn).aantal=jojo.aantal            
           })
           ;
           })  
