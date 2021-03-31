@@ -4,7 +4,8 @@
 
 <div class="mijnboeken">
     <h2>Mijn boeken</h2><br>
-    <h3>Mijn huidige reserveringen</h3>
+    <h3 *ngIf="isUserAdmin">Alle huidige reserveringen</h3>
+    <h3 *ngIf="!isUserAdmin">Mijn huidige reserveringen</h3>
 <table border="1" align="center">
     <thead>
         <tr>
@@ -19,20 +20,6 @@
         </tr>
     </tbody>
 </table>
-<h3>Leenhistorie</h3>
-<table border="1" align="center">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Titel</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Java for Dummies</td>
-        </tr>
-    </tbody>
-</table>
+
 
 </div>
