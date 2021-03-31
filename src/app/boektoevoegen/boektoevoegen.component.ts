@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BoekServiceService} from '../service/boek/boek-service.service'
 import {Boek} from "../model/Boek";
 import {Router} from '@angular/router'
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-boektoevoegen',
@@ -37,17 +38,15 @@ handleAddBook(){
   boek.tags=this.tags;
   boek.status="Beschikbaar";
   boek.titel=this.titel;  
-  this._boekService.addBook(boek).subscribe((res)=>{    console.log(res)
+  this._boekService.addBook(boek).subscribe((res)=>{  
+    this._boekService.addExemplaar(this.isbn, 0, this.aantal).toPromise().then((test=>{console.log(test)}))
   }) 
-  for (let i = 0; i < this.aantal; i++){   
-    this._boekService.addExemplaar(this.isbn, i).subscribe((res) => {     
-    })
-  }
-  this.auteur=null;
-  this.aantal=null;
-  this.isbn=null;
-  this.tags=null;
-  this.titel=null;
+  
+  // this.auteur=null;
+  // this.aantal=null;
+  // this.isbn=null;
+  // this.tags=null;
+  // this.titel=null;
   this.toegevoegdStatus=true;
   setTimeout(() => {
     this.toegevoegdStatus=false;

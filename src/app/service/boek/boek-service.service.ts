@@ -39,11 +39,24 @@ export class BoekServiceService {
     return this.http.post("http://localhost:8082/addBoek", boek, this.httpOptions);
   }
 
-  addExemplaar(isbn: string, amount: number) {
-    let exemplaar = new Exemplaar()
-    exemplaar.wtid = isbn + "." + String(amount + 1)
-    exemplaar.status = "Beschikbaar"
-    return this.http.post(`http://localhost:8082/addExemplaar/${isbn}`, exemplaar, this.httpOptions)
+  addExemplaar(isbn: string, amount: number, toAdd?: number ) {
+    let exemplaren = [];
+    if(toAdd){
+      for(let i =0; i < toAdd; i++){
+        console.log(i);
+        let exemplaar = new Exemplaar()
+        exemplaar.wtid = isbn + "." + String(i+1);
+        exemplaar.status = "Beschikbaar"
+        exemplaren.push(exemplaar)
+      }
+    }else{
+      let exemplaar = new Exemplaar()
+      exemplaar.wtid = isbn + "." + String(amount + 1)
+      exemplaar.status = "Beschikbaar"
+      exemplaren.push(exemplaar);
+    }
+
+    return this.http.post(`http://localhost:8082/addExemplaar/${isbn}`, exemplaren, this.httpOptions)
   }
 
   getExemplaarAmount(isbn: string) {
