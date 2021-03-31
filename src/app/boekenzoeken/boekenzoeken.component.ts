@@ -33,8 +33,7 @@ export class BoekenzoekenComponent implements OnInit {
     })
   }
 
-  testing(event) {
-  }
+ 
   
   searchBoeken() {
     this._boekService.searchBoeken(this.zoekTerm).subscribe((boeken: Boek[]) => {
@@ -67,9 +66,15 @@ export class BoekenzoekenComponent implements OnInit {
     this.router.navigate(['boekbewerken', isbn])
   }
 
-naarpagina(isbn){
+  naarpagina(isbn){
   this.router.navigate(['boekpagina', isbn])
-}
+  }
+
+  maakReservering(isbn){
+    this._boekService.maakReservering(isbn).subscribe((reservering =>{
+      console.log(reservering)
+    }));
+  }
 
   exemplaartoevoegen(isbn) {
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
@@ -78,7 +83,10 @@ naarpagina(isbn){
         .subscribe((jojo:Boek) => {jojo.aantal = jojo.aantal +1,
         this._boekService.updateBook(isbn, jojo).subscribe(
           data => { 
-            this.gevondenAllBoeken.find(x => x.isbn=isbn).aantal=jojo.aantal            
+            // console.log(isbn)
+            // console.log(this.gevondenAllBoeken.findIndex(x=>x.isbn == isbn))
+            this.gevondenAllBoeken.find(x => x.isbn ==isbn).aantal=jojo.aantal
+            this.gevondenBoeken.find(x=> x.isbn == isbn).aantal =jojo.aantal            
           })
           ;
           })  

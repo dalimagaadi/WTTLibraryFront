@@ -72,6 +72,12 @@ determineAdmin(){
   return adminbool
 }
 
+getUserEmail(){
+  let userEmail = sessionStorage.getItem('authenticatedUser')
+  
+  return userEmail
+}
+
 addUser(user: User){
   return this.http.post("http://localhost:8082/addUser", user, this.httpOptions);
 }

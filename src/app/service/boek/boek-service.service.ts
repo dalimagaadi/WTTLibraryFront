@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Boek } from 'src/app/model/Boek';
+import { User } from 'src/app/model/User';
 import { HttpHeaders } from '@angular/common/http';
 import { Exemplaar } from 'src/app/model/Exemplaar';
-import { Observable } from 'rxjs';
 
+import {AdminBepalenService} from '../admin-service/admin-bepalen.service'
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +18,15 @@ export class BoekServiceService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public adminBepalenService: AdminBepalenService) { }
 
+  
+  maakReservering(isbn){
+    let _userEmail = this.adminBepalenService.getUserEmail();
+    //User ophalen uit de session storage
+    return this.http.post(`http://localhost:8082/reserveer/${isbn}/${_userEmail}`,{}, this.httpOptions);
+  }
+  
   searchBoeken(searchTerm: string) {
     return this.http.get(this._url + searchTerm)
   }
