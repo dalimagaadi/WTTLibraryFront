@@ -1,22 +1,47 @@
 <div class="welkomnaam">
     <h1>Welkom {{_gebruiker.voornaam | titlecase}}</h1>
+    <br>
 </div>
 
 <div class="mijnboeken">
-    <h2>Mijn boeken</h2><br>
     <h3 *ngIf="isUserAdmin">Alle huidige reserveringen</h3>
     <h3 *ngIf="!isUserAdmin">Mijn huidige reserveringen</h3>
-<table border="1" align="center">
+    <br>
+
+<table *ngIf="isUserAdmin" class= "Allreservering" border="1" align="center">
+        
     <thead>
         <tr>
-            <th>#</th>
-            <th>Titel</th>
+            <th style="white-space:nowrap">WTid</th>
+            <th style="white-space:nowrap">Titel</th>
+            <th style="white-space:nowrap">Gebruiker</th>
+            <th style="white-space:nowrap">Datum</th>
         </tr>
     </thead>
     <tbody>
+        <tr *ngFor= "let reservering of gevondenAllReserveringen">
+            <td style="white-space:nowrap">{{reservering.exemplaar.wtid}}</td>
+            <td style="white-space:nowrap">{{reservering.titel}}</td>
+            <td style="white-space:nowrap">{{reservering.user}}</td>
+            <td style="white-space:nowrap">{{reservering.reserveringsDatum}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table *ngIf="!isUserAdmin" class= "reservering" border="1" align="center">
+        
+    <thead>
         <tr>
-            <td>1</td>
-            <td>HTML for Dummies</td>
+            <th style="white-space:nowrap">ISBN</th>
+            <th style="white-space:nowrap">Titel</th>
+            <th style="white-space:nowrap">Datum</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let reservering of gevondenUserReserveringen">
+            <td style="white-space:nowrap">{{reservering.isbn}}</td>
+            <td style="white-space:nowrap">{{reservering.titel}}</td>
+            <td style="white-space:nowrap">{{reservering.reserveringsDatum}}</td>
         </tr>
     </tbody>
 </table>

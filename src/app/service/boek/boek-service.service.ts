@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Boek } from 'src/app/model/Boek';
+import { Reservering } from 'src/app/model/Reservering';
 import { User } from 'src/app/model/User';
 import { HttpHeaders } from '@angular/common/http';
 import { Exemplaar } from 'src/app/model/Exemplaar';
@@ -61,5 +62,13 @@ export class BoekServiceService {
   updateBook(isbn: string, boek) {
     return this.http.put(
       `http://localhost:8082/bewerkBoek/${isbn}`, boek)
+  }
+
+  getReserveringen(){
+    return this.http.get(`http://localhost:8082/reserveringen`)
+  }
+
+  getUserReserveringen(email: string){
+    return this.http.get(`http://localhost:8082/userReserveringen/${email}`)
   }
 }
