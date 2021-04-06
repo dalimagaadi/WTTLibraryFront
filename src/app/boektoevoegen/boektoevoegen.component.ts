@@ -39,15 +39,19 @@ handleAddBook(){
   boek.status="Beschikbaar";
   boek.titel=this.titel;  
   this._boekService.addBook(boek).subscribe((res)=>{  
-    this._boekService.addExemplaar(this.isbn, 0, this.aantal).toPromise().then((test=>{console.log(test)}))
+    this._boekService.addExemplaar(this.isbn, 0, this.aantal).toPromise().then((test=>{
+
+    this.auteur=null;
+    this.aantal=null;
+    this.isbn=null;
+    this.tags=null;
+    this.titel=null;
+    this.toegevoegdStatus=true;
+
+    }))
   }) 
   
-  // this.auteur=null;
-  // this.aantal=null;
-  // this.isbn=null;
-  // this.tags=null;
-  // this.titel=null;
-  this.toegevoegdStatus=true;
+ 
   setTimeout(() => {
     this.toegevoegdStatus=false;
   }, 3000); 
