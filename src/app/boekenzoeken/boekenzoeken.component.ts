@@ -72,9 +72,22 @@ export class BoekenzoekenComponent implements OnInit {
 
   maakReservering(isbn){
     this._boekService.maakReservering(isbn).subscribe((reservering =>{
-      console.log(reservering)
-    }));
-  }
+      this._boekService.getBook(isbn)
+        .subscribe((jojo:Boek) => {jojo.aantal = jojo.aantal -1,
+        this._boekService.updateBook(isbn, jojo).subscribe(
+          data => { 
+            this.gevondenAllBoeken.find(x => x.isbn ==isbn).aantal=jojo.aantal
+            this.gevondenBoeken.find(x=> x.isbn == isbn).aantal =jojo.aantal
+          })
+          ;
+          })  
+      })
+    )}    
+  
+  
+  
+  
+
 
   exemplaartoevoegen(isbn) {
     this._boekService.getExemplaarAmount(isbn).subscribe((amount: number) => {
