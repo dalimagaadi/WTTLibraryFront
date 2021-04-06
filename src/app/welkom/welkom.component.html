@@ -11,7 +11,7 @@
 <table *ngIf="isUserAdmin" class= "Allreservering" border="1" align="center">
         
     <thead>
-        <tr>
+        <tr class="tr-header">
             <th style="white-space:nowrap">WTid</th>
             <th style="white-space:nowrap">Titel</th>
             <th style="white-space:nowrap">Gebruiker</th>
@@ -19,8 +19,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor= "let reservering of gevondenAllReserveringen">
-            <td style="white-space:nowrap">{{reservering.exemplaar.wtid}}</td>
+        <tr  *ngFor= "let reservering of gevondenAllReserveringen">
+            <td class="isbn" style="white-space:nowrap" (click)=naarpagina(reservering.exemplaar.wtid)>{{reservering.exemplaar.wtid}}</td>
             <td style="white-space:nowrap">{{reservering.titel}}</td>
             <td style="white-space:nowrap">{{reservering.user}}</td>
             <td style="white-space:nowrap">{{reservering.reserveringsDatum}}</td>
@@ -31,7 +31,7 @@
 <table *ngIf="!isUserAdmin" class= "reservering" border="1" align="center">
         
     <thead>
-        <tr>
+        <tr class="tr-header">
             <th style="white-space:nowrap">ISBN</th>
             <th style="white-space:nowrap">Titel</th>
             <th style="white-space:nowrap">Datum</th>

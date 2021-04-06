@@ -4,6 +4,7 @@ import { Reservering } from '../model/Reservering';
 
 import { AdminBepalenService } from '../service/admin-service/admin-bepalen.service';
 import { BoekServiceService } from '../service/boek/boek-service.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class WelkomComponent implements OnInit {
   gevondenAllReserveringen: Reservering[] = [];
   gevondenUserReserveringen: Reservering[] = [];
   email: string;
-  constructor(private adminBepalenService: AdminBepalenService, private _boekService: BoekServiceService) { }
+  constructor(private adminBepalenService: AdminBepalenService, private _boekService: BoekServiceService,    private router: Router){ }
 
   ngOnInit() {
     this.adminBepalenService.currentUserObservable.subscribe((_currentUser: User) => {
@@ -31,9 +32,13 @@ export class WelkomComponent implements OnInit {
     this.searchAllReserveringen();
     this.searchUserReserveringen();
   }
-
+  naarpagina(wtId: String){
+    let isbn = wtId.split('.')[0];
+    this.router.navigate(['boekpagina', isbn])
+    }
   searchAllReserveringen() {
     this._boekService.getReserveringen().subscribe((allreservering: Reservering[]) => {
+      console.log(allreservering)
       this.gevondenAllReserveringen = allreservering;
     })
   }

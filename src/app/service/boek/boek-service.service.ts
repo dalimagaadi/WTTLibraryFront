@@ -28,6 +28,15 @@ export class BoekServiceService {
     return this.http.post(`http://localhost:8082/reserveer/${isbn}/${_userEmail}`,{}, this.httpOptions);
   }
   
+  leenBoekUit(reservering: Reservering){
+    return this.http.post(`http://localhost:8082/leenBoekUit`,reservering, this.httpOptions);
+
+  }
+  brengBoekTerug(reservering: Reservering){
+    let _userEmail = this.adminBepalenService.getUserEmail();
+    return this.http.post(`http://localhost:8082/brengBoekTerug/${_userEmail}`,reservering, this.httpOptions);
+
+  }
   searchBoeken(searchTerm: string) {
     return this.http.get(this._url + searchTerm)
   }
@@ -73,6 +82,7 @@ export class BoekServiceService {
   }
 
   updateBook(isbn: string, boek) {
+
     return this.http.put(
       `http://localhost:8082/bewerkBoek/${isbn}`, boek)
   }
@@ -83,5 +93,9 @@ export class BoekServiceService {
 
   getUserReserveringen(email: string){
     return this.http.get(`http://localhost:8082/userReserveringen/${email}`)
+  }
+
+  getExemplaarReservering(exemplaarID: number ){
+    return this.http.get(`http://localhost:8082/getExemplaarReservering/${exemplaarID}`)
   }
 }
