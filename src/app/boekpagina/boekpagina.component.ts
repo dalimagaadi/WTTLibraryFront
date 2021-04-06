@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Boek } from "../model/Boek";
+import { Reservering } from '../model/Reservering';
 import { BoekServiceService } from '../service/boek/boek-service.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Exemplaar } from '../model/Exemplaar';
@@ -9,10 +10,10 @@ import { Exemplaar } from '../model/Exemplaar';
   styleUrls: ['./boekpagina.component.css']
 })
 export class BoekpaginaComponent implements OnInit {
-  isbn:string
+  isbn: string
   boek: Boek
 
-  constructor( private _boekService: BoekServiceService,
+  constructor(private _boekService: BoekServiceService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -20,11 +21,8 @@ export class BoekpaginaComponent implements OnInit {
     this.isbn = this.route.snapshot.params['isbn'];
     this.boek = new Boek()
     this._boekService.getBook(this.isbn)
-    .subscribe((
-      data => this.boek = data));
-      
-    
-    
+      .subscribe((
+        data => this.boek = data));
   }
 
 
