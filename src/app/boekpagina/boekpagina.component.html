@@ -4,19 +4,19 @@
 <table class="Exemplarenlijst" border="1" align="center">
         
     <thead>
-        <tr>
+        <tr class="tr-header">
             <th style="white-space:nowrap">WTid</th>
             <th style="white-space:nowrap">Status</th>
-            <th style="white-space:nowrap">Gebruiker?</th>             
+            <th *ngIf="reserveringenAanwezig" style="white-space:nowrap">Gebruiker</th>             
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor= "let exemplaar of boek.exemplaren">
-
-            <td style="white-space:nowrap">{{exemplaar.wtid}}</td>
-            <td style="white-space:nowrap">{{exemplaar.status}}</td>
-            <td style="white-space:nowrap">   </td>
-            <td style="white-space:nowrap"><button type=button (click)=uitlenen(boek.isbn)>Boek uitlenen</button></td>
-        </tr>
+    <tbody *ngIf="gereed">
+        <tr *ngFor= "let exemplaarReservering of exemplaarReservering">
+            <td style="white-space:nowrap">{{exemplaarReservering.exemplaar.wtid}}</td>
+            <td style="white-space:nowrap">{{exemplaarReservering.exemplaar.status}}</td>
+            <td *ngIf="exemplaarReservering.reservering && exemplaarReservering.reservering.user" style="white-space:nowrap">{{exemplaarReservering.reservering.user}}</td>
+            <td *ngIf="exemplaarReservering.reservering && exemplaarReservering.exemplaar.status == 'Gereserveerd'" style="white-space:nowrap"><button type=button (click)=leenBoekUit(exemplaarReservering.reservering)>Boek uitlenen</button></td>
+            <td *ngIf="exemplaarReservering.reservering && exemplaarReservering.exemplaar.status == 'Uitgeleend'" style="white-space:nowrap"><button type=button (click)=brengBoekTerug(exemplaarReservering.reservering)>Terug brengen</button></td>
+        </tr> 
     </tbody>
 </table>

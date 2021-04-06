@@ -14,10 +14,10 @@
  <br>
 
 <div class="lijstAllBoek" *ngIf="!zoekTermAanwezig">
- <table class="Allboeklijst" border="1" align="center">
+ <table class="Allboeklijst"  align="center">
         
     <thead>
-        <tr>
+        <tr class="tr-header">
             <th style="white-space:nowrap">ISBN</th>
             <th style="white-space:nowrap">Titel</th>
             <th style="white-space:nowrap">Auteur</th>
@@ -40,10 +40,10 @@
 </table>
 </div>
  <div class="zoeklijst">
-    <table class="boeklijst" border="1" align="center" *ngIf="gevondenBoeken.length > 0">
+    <table class="boeklijst"  align="center" *ngIf="gevondenBoeken.length > 0">
         
         <thead>
-            <tr>
+            <tr class="tr-header">
                 <th style="white-space:nowrap">ISBN</th>
                 <th style="white-space:nowrap">Titel</th>
                 <th style="white-space:nowrap">Auteur</th>
